@@ -27,10 +27,11 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def update
-  @task = current_user.tasks.build(task_params)
+    @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
       redirect_to root_url
